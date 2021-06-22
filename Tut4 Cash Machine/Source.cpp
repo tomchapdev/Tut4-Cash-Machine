@@ -2,6 +2,23 @@
 
 using namespace std;
 
+int main()
+{
+	char enterOption();
+	void displayBalance(int accBalance), withdraw(int& accBalance), credit(int& accBalance), operateTill(char command, int& currentBal);
+
+	cout << "Cash Machine v1.0";
+	int balance = 20;							//setStudentAccount initBal value in balance declaration instead of unnecessary function
+	char option = enterOption();
+
+	while (option != 'e')						//'e' to Exit
+	{
+		operateTill(option, balance);
+		option = enterOption();
+	}
+	return 0;
+}
+
 char enterOption()								//precondition: true
 {
 	char choice;
@@ -50,18 +67,4 @@ void operateTill(char command, int& currentBal) //precondition: true
 	default:									//option is invalid
 		cout << "ERROR: INVALID CHOICE, TRY AGAIN!\n";
 	}
-}
-
-int main()
-{
-	cout << "Cash Machine v1.0";
-	int balance = 20;							//setStudentAccount initBal value in balance declaration instead of unnecessary function
-	char option = enterOption();
-
-	while (option != 'e')						//'e' to Exit
-	{
-		operateTill(option, balance);
-		option = enterOption();
-	}
-	return 0;
 }
