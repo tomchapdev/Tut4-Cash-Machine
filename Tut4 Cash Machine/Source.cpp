@@ -22,8 +22,8 @@ int main()
 
 int setStudentAccount()
 {
-	//Hardcoded for now, this should connect to the student's account
-	return 20;
+	int initBal = 20;
+	return initBal;
 }
 
 char enterOption()
@@ -41,21 +41,21 @@ void displayBalance(int accBal)
 
 void withdraw(int& accBalance)
 {
-	int debitAmount;
+	int amountToBeDebited;
 	cout << "ENTER AMOUNT TO BE DEBITED: \x9C";
-	cin >> debitAmount;
-	if (debitAmount <= accBalance)
-		accBalance = accBalance - debitAmount;
+	cin >> amountToBeDebited;
+	if (amountToBeDebited <= accBalance)
+		accBalance = accBalance - amountToBeDebited;
 	else
 		cout << "ERROR: OPERATION REFUSED!\n";
 }
 
 void credit(int& accBalance)
 {
-	int creditAmount;
+	int amountToBeCredited;
 	cout << "ENTER AMOUNT TO BE CREDITED: \x9C";
-	cin >> creditAmount;
-	accBalance = accBalance + creditAmount;
+	cin >> amountToBeCredited;
+	accBalance = accBalance + amountToBeCredited;
 }
 
 void operateTill(char command, int& currentBal)
