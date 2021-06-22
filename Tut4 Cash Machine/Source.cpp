@@ -4,14 +4,15 @@ using namespace std;
 
 int main()
 {
+	int setStudentAccount();
 	char enterOption();
 	void displayBalance(int accBalance), withdraw(int& accBalance), credit(int& accBalance), operateTill(char command, int& currentBal);
 
 	cout << "Cash Machine v1.0";
-	int balance = 20;							//setStudentAccount initBal value in balance declaration instead of unnecessary function
+	int balance = setStudentAccount();
 	char option = enterOption();
 
-	while (option != 'e')						//'e' to Exit
+	while (option != 'e')
 	{
 		operateTill(option, balance);
 		option = enterOption();
@@ -19,7 +20,13 @@ int main()
 	return 0;
 }
 
-char enterOption()								//precondition: true
+int setStudentAccount()
+{
+	//Hardcoded for now, this should connect to the student's account
+	return 20;
+}
+
+char enterOption()
 {
 	char choice;
 	cout << "\nOPTIONS: W for withdrawal, C for credit, B for balance, E for exit \nENTER YOUR CHOICE: ";
@@ -27,12 +34,12 @@ char enterOption()								//precondition: true
 	return tolower(choice);
 }
 
-void displayBalance(int accBal)					//precondition: true
+void displayBalance(int accBal)
 {
 	cout << "YOUR BALANCE IS: \x9C" << accBal << endl;
 }
 
-void withdraw(int& accBalance)					//precondition: true
+void withdraw(int& accBalance)
 {
 	int debitAmount;
 	cout << "ENTER AMOUNT TO BE DEBITED: \x9C";
@@ -43,7 +50,7 @@ void withdraw(int& accBalance)					//precondition: true
 		cout << "ERROR: OPERATION REFUSED!\n";
 }
 
-void credit(int& accBalance)					//precondition: true
+void credit(int& accBalance)
 {
 	int creditAmount;
 	cout << "ENTER AMOUNT TO BE CREDITED: \x9C";
@@ -51,20 +58,20 @@ void credit(int& accBalance)					//precondition: true
 	accBalance = accBalance + creditAmount;
 }
 
-void operateTill(char command, int& currentBal) //precondition: true
+void operateTill(char command, int& currentBal)
 {
 	switch (command)
 	{
-	case 'b':									//'b' for Balance
+	case 'b':
 		displayBalance(currentBal);
 		break;
-	case 'w':									//'w' for Withdraw
+	case 'w':
 		withdraw(currentBal);
 		break;
-	case 'c':									//'c' for Credit
+	case 'c':
 		credit(currentBal);
 		break;
-	default:									//option is invalid
+	default:
 		cout << "ERROR: INVALID CHOICE, TRY AGAIN!\n";
 	}
 }
