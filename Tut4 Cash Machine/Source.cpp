@@ -1,34 +1,36 @@
 #include <iostream>
 
+using namespace std;
+
 char enterOption()								//precondition: true
 {
 	char choice;
-	std::cout << "\nOPTIONS: W for withdrawal, C for credit, B for balance, E for exit \nENTER YOUR CHOICE: ";
-	std::cin >> choice;
+	cout << "\nOPTIONS: W for withdrawal, C for credit, B for balance, E for exit \nENTER YOUR CHOICE: ";
+	cin >> choice;
 	return tolower(choice);
 }
 
 void displayBalance(int accBal)					//precondition: true
 {
-	std::cout << "YOUR BALANCE IS: \x9C" << accBal << std::endl;
+	cout << "YOUR BALANCE IS: \x9C" << accBal << endl;
 }
 
 void withdraw(int& accBalance)					//precondition: true
 {
 	int debitAmount;
-	std::cout << "ENTER AMOUNT TO BE DEBITED: \x9C";
-	std::cin >> debitAmount;
+	cout << "ENTER AMOUNT TO BE DEBITED: \x9C";
+	cin >> debitAmount;
 	if (debitAmount <= accBalance)
 		accBalance = accBalance - debitAmount;
 	else
-		std::cout << "ERROR: OPERATION REFUSED!\n";
+		cout << "ERROR: OPERATION REFUSED!\n";
 }
 
 void credit(int& accBalance)					//precondition: true
 {
 	int creditAmount;
-	std::cout << "ENTER AMOUNT TO BE CREDITED: \x9C";
-	std::cin >> creditAmount;
+	cout << "ENTER AMOUNT TO BE CREDITED: \x9C";
+	cin >> creditAmount;
 	accBalance = accBalance + creditAmount;
 }
 
@@ -46,13 +48,13 @@ void operateTill(char command, int& currentBal) //precondition: true
 		credit(currentBal);
 		break;
 	default:									//option is invalid
-		std::cout << "ERROR: INVALID CHOICE, TRY AGAIN!\n";
+		cout << "ERROR: INVALID CHOICE, TRY AGAIN!\n";
 	}
 }
 
 int main()
 {
-	std::cout << "Cash Machine v1.0";
+	cout << "Cash Machine v1.0";
 	int balance = 20;							//setStudentAccount initBal value in balance declaration instead of unnecessary function
 	char option = enterOption();
 
