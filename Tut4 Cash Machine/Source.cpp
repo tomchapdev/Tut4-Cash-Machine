@@ -8,7 +8,6 @@ int main()
 	char enterOption();
 	void displayBalance(int accBalance), withdraw(int& accBalance), credit(int& accBalance), operateTill(char command, int& currentBal);
 
-	cout << "Cash Machine v1.0";
 	int balance = setStudentAccount();
 	char option = enterOption();
 
@@ -22,8 +21,7 @@ int main()
 
 int setStudentAccount()
 {
-	int initBal = 20;
-	return initBal;
+	return 20;
 }
 
 char enterOption()
